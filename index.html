@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(180deg, #FAF6EF 0%, #F1E8D9 100%);
+      color: #2B2118;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .card {
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      color: #B65C38;
+    }
+    .tagline {
+      color: #8A7A6A;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    a {
+      display: block;
+      padding: 14px 20px;
+      background: #FFFFFF;
+      border: 1px solid #E4D9C8;
+      border-radius: 12px;
+      color: #2B2118;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    a:hover {
+      background: #FFF9EF;
+      border-color: #B65C38;
+      color: #B65C38;
+    }
+    .footer {
+      margin-top: 40px;
+      color: #8A7A6A;
+      font-size: 12px;
+    }
+    .footer a {
+      display: inline;
+      padding: 0;
+      background: none;
+      border: none;
+      color: #8A7A6A;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Billo</h1>
+    <p class="tagline">Every bill, on time</p>
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="eula.html">End User License Agreement</a>
+    </div>
+    <p class="footer">
+      Cloud Motion Lab &middot; <a href="mailto:dev@slyapp.co">dev@slyapp.co</a>
+    </p>
+  </div>
+</body>
+</html>

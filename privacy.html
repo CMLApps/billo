@@ -25,23 +25,23 @@
 </head>
 <body>
     <h1>Privacy Policy</h1>
-    <p class="date">Last updated: 2026-06-11. Effective: 2026-06-11.</p>
+    <p class="date">Last updated: 2026-08-13. Effective: 2026-08-13.</p>
     <p class="lead">This is the Privacy Policy for Billo, an iOS application published by Cloud Motion Lab LLC ("we", "our", "us"). It explains what we collect, why, who we share it with, how long we keep it, and the rights you have. We try to keep this readable. If a section is unclear, write to <a href="mailto:dev@slyapp.co">dev@slyapp.co</a>.</p>
 
     <h2>Notice at Collection (California)</h2>
-    <p>We collect the following categories of personal information when you use Billo: identifiers (Apple-issued anonymous user IDs), commercial information (purchase history within the app), internet or other electronic network activity (in-app usage signals), and the information you voluntarily enter into the app, such as bill names, amounts, due dates, notes, and photos you attach. Your bill information stays on your device and, if you enable sync, in your personal iCloud; it never reaches a server we operate. We use the categories above to deliver the app, schedule the reminders you request, process purchases through Apple, prevent fraud and abuse, and improve features. Retention is described in the Retention section below. <strong>We do not sell your personal information and we do not share it for cross-context behavioral advertising.</strong> A summary of your California privacy rights and the link to exercise them appear in the State Privacy Rights section below.</p>
+    <p>We collect the following categories of personal information when you use Billo: identifiers (Apple-issued anonymous user IDs), commercial information (purchase history within the app), internet or other electronic network activity (in-app usage signals), and the information you voluntarily enter into the app, such as bill names, amounts, due dates, notes, and photos you attach. Your bill information stays on your device; it never reaches a server we operate. We use the categories above to deliver the app, schedule the reminders you request, process purchases through Apple, prevent fraud and abuse, and improve features. Retention is described in the Retention section below. <strong>We do not sell your personal information and we do not share it for cross-context behavioral advertising.</strong> A summary of your California privacy rights and the link to exercise them appear in the State Privacy Rights section below.</p>
 
     <h2>What We Collect</h2>
     <p>Billo is built to collect as little as possible. There are no user accounts, no logins, and no profile pages.</p>
     <ul>
         <li><strong>Anonymous usage analytics</strong> via TelemetryDeck. Examples: when a screen opens, when a paywall appears, when a bill is added or marked paid. Never the contents of your bills. No IP address, no IDFA, no advertising identifier, no persistent identifier tied to you.</li>
         <li><strong>Subscription state</strong> via RevenueCat. We receive an anonymous identifier from Apple that tells the app whether your subscription is active. We never receive your credit card, billing address, Apple ID, or email.</li>
-        <li><strong>Your bill data</strong>: bill names, amounts, due dates, categories, payment history, notes, and photos you attach are stored on your device. If you enable iCloud sync, this data is also stored in your personal iCloud (a CloudKit private database) that only your Apple Account can access. We operate no server that receives, stores, or can read your bill data.</li>
-        <li><strong>Local-only data</strong> stored on your device: your bills, payment history, and app preferences using Apple's SwiftData and UserDefaults frameworks. None of this is synced to a server we operate. Deleting the app deletes this data.</li>
+        <li><strong>Your bill data</strong>: bill names, amounts, due dates, categories, payment history, notes, and photos you attach are stored on your device. We operate no server that receives, stores, or can read your bill data.</li>
+        <li><strong>Local-only data</strong> stored on your device: your bills, payment history, and app preferences using Apple's SwiftData and UserDefaults frameworks. None of it leaves your device. Deleting the app deletes this data.</li>
     </ul>
 
-    <h2>iCloud Sync and Backup</h2>
-    <p>Billo can keep your bills safe across your devices using iCloud. When sync is enabled, your bill data is stored in a CloudKit private database tied to your Apple Account. It is encrypted by Apple in transit and at rest, and it is technically inaccessible to us: we hold no keys and operate no server in the path. You can turn sync off at any time in iOS Settings under your Apple ID, iCloud. Deleting a bill in the app deletes it from your iCloud copy as well. Backup and restore behavior of the private database is governed by Apple's iCloud terms.</p>
+    <h2>Where Your Bills Live</h2>
+    <p>Your bills stay on your iPhone. Billo does not sync your bill data to another device and does not upload it anywhere: the names, amounts, due dates, notes, and photos you enter are stored locally by the app and never reach a server we operate. Billo asks for no account and does not connect to your bank. Deleting the app deletes this data, so if you want to keep a copy, use the export feature before you delete.</p>
 
     <h2>Why We Process Each Category, with Lawful Basis (EU and UK)</h2>
     <table>
@@ -49,7 +49,7 @@
         <tbody>
             <tr><td>Anonymous usage analytics</td><td>Operate and improve the app</td><td>Legitimate interest, Art. 6(1)(f)</td></tr>
             <tr><td>Subscription state</td><td>Deliver paid features you bought</td><td>Performance of contract, Art. 6(1)(b)</td></tr>
-            <tr><td>Bill data you enter (on device and in your iCloud)</td><td>Provide the bill tracking, reminders, and sync you request</td><td>Performance of contract, Art. 6(1)(b)</td></tr>
+            <tr><td>Bill data you enter (on your device)</td><td>Provide the bill tracking and reminders you request</td><td>Performance of contract, Art. 6(1)(b)</td></tr>
             <tr><td>Fraud, abuse, and security monitoring</td><td>Protect users and the service</td><td>Legitimate interest, Art. 6(1)(f); legal obligation, Art. 6(1)(c)</td></tr>
         </tbody>
     </table>
@@ -59,7 +59,7 @@
     <table>
         <thead><tr><th>Subprocessor</th><th>Purpose</th><th>Region</th><th>Transfer mechanism (EU and UK)</th></tr></thead>
         <tbody>
-            <tr><td>TelemetryDeck</td><td>Anonymous usage analytics</td><td>European Union (Germany)</td><td>Adequacy, no transfer needed for EU and UK; GDPR direct application</td></tr><tr><td>RevenueCat</td><td>Subscription state management, anonymized user IDs only</td><td>United States</td><td>EU-US Data Privacy Framework, with 2021 SCCs as backstop</td></tr><tr><td>Apple App Store, StoreKit, iCloud</td><td>App distribution, subscription processing, anonymous receipt</td><td>Global, governed by Apple</td><td>Apple's own Data Privacy Framework certification and SCCs, see Apple Privacy Policy</td></tr>
+            <tr><td>TelemetryDeck</td><td>Anonymous usage analytics</td><td>European Union (Germany)</td><td>Adequacy, no transfer needed for EU and UK; GDPR direct application</td></tr><tr><td>RevenueCat</td><td>Subscription state management, anonymized user IDs only</td><td>United States</td><td>EU-US Data Privacy Framework, with 2021 SCCs as backstop</td></tr><tr><td>Apple App Store, StoreKit</td><td>App distribution, subscription processing, anonymous receipt</td><td>Global, governed by Apple</td><td>Apple's own Data Privacy Framework certification and SCCs, see Apple Privacy Policy</td></tr>
         </tbody>
     </table>
     <p>For transfers from the EU, UK, or Switzerland to the United States, we rely first on the EU-US Data Privacy Framework where the recipient is certified, and on the 2021 Standard Contractual Clauses (with the UK International Data Transfer Addendum where applicable) as a backstop. We monitor regulatory changes to the Data Privacy Framework and are prepared to switch to SCCs as the primary mechanism if the Framework is invalidated.</p>
@@ -69,7 +69,6 @@
         <li><strong>On-device data</strong>: kept until you delete it in the app, or until you delete the app.</li>
         <li><strong>Anonymous analytics</strong>: aggregated and retained by TelemetryDeck for up to 24 months in a form not linked to you.</li>
         <li><strong>Subscription state</strong>: retained by RevenueCat for the life of the anonymous identifier plus a reasonable archival period.</li>
-        <li><strong>iCloud-synced bill data</strong>: stored in your personal iCloud under your Apple Account until you delete it in the app or disable iCloud for Billo; governed by Apple's iCloud terms.</li>
         <li><strong>Logs for fraud and abuse</strong>: up to 12 months.</li>
     </ul>
 
@@ -106,7 +105,7 @@
     <p>We use commercially reasonable administrative, technical, and physical safeguards to protect personal information. No system is perfectly secure. If we determine that a personal-data breach affecting your information has occurred, we will notify you and applicable regulators in accordance with applicable law. For users in the EU and UK, our notification window is 72 hours after we become aware, in line with GDPR Article 33. For U.S. users, we follow the notification rules of your state.</p>
 
     <h2>Data Storage</h2>
-    <p>Data on your device is stored using standard Apple frameworks (UserDefaults, SwiftData, Keychain, CloudKit). Data we send to subprocessors is stored on their infrastructure; the location and retention are listed in the Subprocessors table. We do not operate our own user-data servers for Billo; if you enable iCloud sync, your bill data lives in your personal iCloud under your Apple Account.</p>
+    <p>Data on your device is stored using standard Apple frameworks (UserDefaults, SwiftData, Keychain). Data we send to subprocessors is stored on their infrastructure; the location and retention are listed in the Subprocessors table. We do not operate our own user-data servers for Billo, and your bill data stays on your device.</p>
 
     <h2>Changes to This Policy</h2>
     <p>We may update this Privacy Policy. For material changes, including expansion of categories collected, new subprocessors that change data flow, new regions, or changes to dispute-resolution rules referenced here, we will give at least 30 days' advance notice through an in-app banner and, where available, the email address associated with your Apple ID, and will update the effective date at the top of this page. Minor changes such as typographical or formatting fixes may be made without separate notice. Continued use of the app on or after the effective date of an updated version constitutes acceptance.</p>

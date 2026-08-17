@@ -1,87 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Billo</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-      background: linear-gradient(180deg, #FAF6EF 0%, #F1E8D9 100%);
-      color: #2B2118;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>How do I keep track of when my bills are due? | Billo</title>
+<meta name="description" content="Cloud Motion Lab makes small iPhone apps that each do one job, run on your device, and need no account to create or sign in to.">
+<link rel="canonical" href="https://cmlapps.github.io/">
+<meta name="theme-color" content="#F6FCF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0A100B" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cloud Motion Lab">
+<meta property="og:title" content="How do I keep track of when my bills are due?">
+<meta property="og:description" content="Cloud Motion Lab makes small iPhone apps that each do one job, run on your device, and need no account to create or sign in to.">
+<meta property="og:url" content="https://cmlapps.github.io/">
+<meta property="og:image" content="">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/png;base64,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">
+
+<style>
+/* ---- fallback tokens: any browser without oklch() gets a neutral, on-brand page ---- */
+:root{
+  --bg:#FBFAFC; --surface:#FFFFFF; --ink:#191920; --ink-2:#56565F;
+  --line:#E4E3E9; --accent:#1B1B22; --on-accent:#FFFFFF;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0E0E13; --surface:#17171D; --ink:#F4F4F7; --ink-2:#A9A9B3;
+    --line:#33333C; --accent:#F4F4F7; --on-accent:#0E0E13;
+  }
+}
+/* ---- the real system: one app-specific number drives every colour on the page ---- */
+@supports (color: oklch(0.5 0.1 180)){
+  :root{
+    --h:150;
+    --bg:oklch(0.985 0.010 var(--h));
+    --surface:oklch(1 0 0);
+    --ink:oklch(0.20 0.020 var(--h));
+    --ink-2:oklch(0.44 0.018 var(--h));
+    --line:oklch(0.860 0.022 var(--h));
+    --accent:oklch(0.48 0.160 var(--h));
+    --on-accent:oklch(0.99 0.005 var(--h));
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:oklch(0.165 0.014 var(--h));
+      --surface:oklch(0.205 0.016 var(--h));
+      --ink:oklch(0.965 0.006 var(--h));
+      --ink-2:oklch(0.735 0.014 var(--h));
+      --line:oklch(0.365 0.022 var(--h));
+      --accent:oklch(0.780 0.150 var(--h));
+      --on-accent:oklch(0.170 0.030 var(--h));
     }
-    .card {
-      max-width: 520px;
-      width: 100%;
-      text-align: center;
-    }
-    h1 {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-      color: #B65C38;
-    }
-    .tagline {
-      color: #8A7A6A;
-      font-size: 16px;
-      margin-bottom: 40px;
-    }
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 320px;
-      margin: 0 auto;
-    }
-    a {
-      display: block;
-      padding: 14px 20px;
-      background: #FFFFFF;
-      border: 1px solid #E4D9C8;
-      border-radius: 12px;
-      color: #2B2118;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.15s ease;
-    }
-    a:hover {
-      background: #FFF9EF;
-      border-color: #B65C38;
-      color: #B65C38;
-    }
-    .footer {
-      margin-top: 40px;
-      color: #8A7A6A;
-      font-size: 12px;
-    }
-    .footer a {
-      display: inline;
-      padding: 0;
-      background: none;
-      border: none;
-      color: #8A7A6A;
-    }
-  </style>
+  }
+}
+:root{
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --rail:24px;
+  color-scheme:light dark;
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.55;
+  font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:inherit}
+a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:3px;
+}
+/* the CTA is already accent-filled, so its ring is ink: a different mark, not a louder one */
+.cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+.doc{
+  max-width:640px;
+  margin:0 auto;
+  padding:20px 20px calc(48px + env(safe-area-inset-bottom)) 20px;
+}
+@media (min-width:600px){ .doc{padding:32px 32px 64px} }
+
+/* ---- masthead ---- */
+.masthead{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:32px;
+}
+.brand{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+  text-decoration:none;
+}
+.brand:hover{color:var(--ink)}
+/* the right slot is a support jump, not a decorative genre label. This URL is the
+   App Store Support URL, so a contact route has to be reachable without scrolling. */
+.masthead .support-jump{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+  text-decoration:none;
+  border-bottom:1px solid var(--line);
+}
+.masthead .support-jump:hover{color:var(--ink)}
+
+/* ---- the question: semantically first, visually second ---- */
+.q{
+  font-size:20px;
+  font-weight:590;
+  line-height:1.35;
+  letter-spacing:-0.011em;
+  color:var(--ink-2);
+  margin:0 0 12px;
+  text-wrap:balance;
+}
+/* ---- the answer: the largest type on the page, because it is why anyone is here ---- */
+.a{
+  font-size:27px;
+  font-weight:600;
+  line-height:1.26;
+  letter-spacing:-0.022em;
+  margin:0 0 28px;
+  text-wrap:pretty;
+}
+@media (min-width:600px){
+  .q{font-size:22px}
+  .a{font-size:32px;margin-bottom:32px}
+}
+
+/* ---- the one conversion event. Radii are concentric: 12 button + 14 padding = 26 card ---- */
+.get{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:14px;
+  margin-bottom:48px;
+}
+.get-app{display:flex;align-items:center;gap:12px;margin:2px 0 16px 2px}
+.get-icon{
+  width:56px;height:56px;flex:none;
+  border-radius:13px;
+  box-shadow:0 0 0 1px var(--line);
+  display:block;
+}
+.get-name{font-size:17px;font-weight:600;letter-spacing:-0.012em;line-height:1.25}
+.get-meta{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--ink-2);
+  letter-spacing:0.01em;
+  margin-top:3px;
+}
+.cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:0 16px;
+  background:var(--accent);
+  color:var(--on-accent);
+  border-radius:12px;
+  font-size:clamp(15px,4.2vw,17px);
+  font-weight:700;
+  letter-spacing:-0.012em;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:transform .16s cubic-bezier(.2,.7,.2,1),filter .16s ease;
+}
+.cta:hover{filter:brightness(1.08)}
+.cta:active{transform:scale(.985)}
+
+/* ---- the rail: everything below the answer is apparatus, and hangs off one line ---- */
+.rail{
+  border-left:1px solid var(--line);
+  margin-left:7px;
+  padding-left:var(--rail);
+}
+.sec{margin-bottom:44px}
+.sec:last-child{margin-bottom:0}
+.lbl{
+  font-family:var(--mono);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:0.13em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin:0 0 16px calc(-1px - var(--rail));
+  padding:2px 0;
+  background:var(--bg);
+}
+
+/* ---- steps: numbered because the content genuinely is a sequence ---- */
+.steps{list-style:none;counter-reset:step;margin:0;padding:0}
+.steps li{position:relative;margin-bottom:20px}
+.steps li:last-child{margin-bottom:0}
+.steps li::before{
+  counter-increment:step;
+  content:counter(step);
+  position:absolute;
+  left:calc(-1px - var(--rail));
+  top:0;
+  width:var(--rail);
+  font-family:var(--mono);
+  font-size:12px;
+  font-variant-numeric:tabular-nums;
+  line-height:26px;
+  color:var(--ink-2);
+  background:var(--bg);
+}
+.steps b{display:block;font-weight:600;letter-spacing:-0.01em}
+.steps p{margin:2px 0 0;color:var(--ink-2)}
+
+/* ---- support: the address is set in full-strength ink, never in the accent.
+       Weight and colour do the work so the CTA keeps the only coloured mark ---- */
+.support{scroll-margin-top:20px}
+.support p{margin:0;color:var(--ink-2)}
+.support-mail{
+  display:inline-block;
+  margin-bottom:8px;
+  font-size:17px;
+  font-weight:600;
+  letter-spacing:-0.012em;
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+
+/* ---- facts ---- */
+.facts{margin:0;font-size:15px}
+.facts div{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:9px 0;
+  border-bottom:1px solid var(--line);
+}
+.facts div:last-child{border-bottom:0}
+.facts dt{font-family:var(--mono);font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-2);padding-top:2px}
+.facts dd{margin:0;text-align:right}
+
+/* ---- questions: always open, no script, fully extractable ---- */
+.faq h3{
+  font-size:16px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  line-height:1.4;
+  margin:0 0 4px;
+}
+.faq p{margin:0 0 20px;color:var(--ink-2)}
+.faq p:last-child{margin-bottom:0}
+
+/* ---- footer ---- */
+.foot{
+  margin-top:48px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  font-family:var(--mono);
+  font-size:12px;
+  line-height:1.9;
+  color:var(--ink-2);
+}
+.foot-store{
+  display:inline-block;
+  color:var(--ink);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+  margin-bottom:14px;
+}
+.foot-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-bottom:14px}
+.foot-links a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}
+.foot-links a:hover{color:var(--ink)}
+.foot-legal{letter-spacing:0.02em}
+
+/* ---- one entrance, transform only: nothing on this page is ever invisible ---- */
+@keyframes rise{from{transform:translateY(10px)}to{transform:translateY(0)}}
+.q,.a,.get{animation:rise .5s cubic-bezier(.2,.75,.25,1) both}
+.a{animation-delay:.05s}
+.get{animation-delay:.11s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+</style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>Billo</h1>
-    <p class="tagline">Every bill, on time</p>
-    <div class="links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Use</a>
-      <a href="eula.html">End User License Agreement</a>
+<main class="doc">
+
+  <header class="masthead">
+    <a class="brand" href="https://cmlapps.github.io/">Cloud Motion Lab</a>
+    <a class="support-jump" href="#support">Support</a>
+  </header>
+
+  <h1 class="q">How do I keep track of when my bills are due?</h1>
+
+  <p class="a">Bill Organizer - Billo holds every bill and its due date in one list on your iPhone and reminds you three days ahead and again on the morning it is due. You type the bills in yourself, so there is no bank login.</p>
+
+  <div class="get">
+    <div class="get-app">
+      <img class="get-icon" src="data:image/png;base64,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" alt="" width="56" height="56">
+      <div>
+        <div class="get-name">Bill Organizer - Billo</div>
+        <div class="get-meta">Bill due date tracker for iPhone · iOS 17.0 or later</div>
+      </div>
     </div>
-    <p class="footer">
-      Cloud Motion Lab &middot; <a href="mailto:dev@slyapp.co">dev@slyapp.co</a>
-    </p>
+    <a class="cta" href="https://apps.apple.com/us/app/bill-organizer-billo/id6779454945">Get Billo on the App Store</a>
   </div>
+
+  <div class="rail">
+
+    <section class="sec">
+      <h2 class="lbl">How it works</h2>
+      <ol class="steps">
+        <li><b>Add your first bill</b><p>Name, amount, due date. It takes about ten seconds, because nothing is being fetched from anywhere: you are telling the app what you already know rather than authorising it to go looking.</p></li>
+        <li><b>Set how it repeats</b><p>Once, weekly, monthly, yearly, or every N days for the ones that do not fit a calendar month. Rent and insurance are usually monthly; a quarterly water bill is every ninety days.</p></li>
+        <li><b>Let the reminders carry it</b><p>Two notifications per bill, at 10:00 local time: one three days ahead so there is room to move money, and one on the morning it is due. That is the whole mechanism.</p></li>
+        <li><b>Pay it your usual way, then stamp it</b><p>The paying happens wherever it always happened, in your banking app or on the biller's site. Come back and stamp the bill paid. It leaves what is owed, the recurrence rolls forward, and the month seal fills in.</p></li>
+      </ol>
+    </section>
+
+    <section class="sec">
+      <h2 class="lbl">The app</h2>
+      <dl class="facts">
+        <div><dt>Price</dt><dd>Free to download, five bills free. Unlimited bills, the Home Screen widget, photo attachments, payment history, CSV export and iCloud sync are a paid unlock.</dd></div>
+        <div><dt>Requires</dt><dd>iPhone, iOS 17.0 or later. Notification permission, or the reminders cannot fire.</dd></div>
+        <div><dt>Account</dt><dd>None, and no bank connection. Bills are typed in by hand and stay on the phone. Nobody here can see them.</dd></div>
+        <div><dt>Publisher</dt><dd>Cloud Motion Lab LLC</dd></div>
+      </dl>
+    </section>
+
+    <section class="sec faq">
+      <h2 class="lbl">Common questions</h2>
+      <h3>What is the simplest way to do this with no app at all?</h3>
+      <p>Open your calendar, make one repeating event per bill on its due day, name it with the biller and the amount, and set the alert a few days early. That covers the whole job for most people. The weak point is that a calendar cannot tell you which ones you have already paid this month, so a lot of people end up keeping a second scrap of paper for exactly that.</p>
+      <h3>Should I just put everything on autopay instead?</h3>
+      <p>Autopay solves late fees and nothing else. It also hides price rises, since a subscription that quietly goes up is paid without you reading the figure, and it can pull money on a day your balance is low and turn a late fee into an overdraft fee. The usual answer is both: autopay the fixed ones like rent and insurance, keep a reminder for the variable ones like power and water, and glance at the amount before it lands.</p>
+      <h3>Does it connect to my bank?</h3>
+      <p>No, and it cannot. There is no bank linking, no account to create and no login. You enter a name, an amount and a due date, which takes a few seconds per bill, and everything is stored on the phone itself. That is the trade: more typing at the start, and no credentials handed to anyone in exchange for less of it.</p>
+      <h3>Is Billo free?</h3>
+      <p>Five bills are free, with reminders, the calendar, marking paid and tracking income in included, no ads and no account. Paying lifts the bill limit and adds the Home Screen widget, photo attachments on a bill, the payment history ledger, CSV export of your records and iCloud sync across devices. Without it the data stays on the one phone.</p>
+    </section>
+
+    <section class="sec support" id="support">
+      <h2 class="lbl">Support</h2>
+      <a class="support-mail" href="mailto:dev@slyapp.co">dev@slyapp.co</a>
+      <p>Every app here shares one address, and it is read by the person who builds them. Say which app you are writing about and what happened, and you will get an answer back.</p>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    <a class="foot-store" href="https://apps.apple.com/us/app/bill-organizer-billo/id6779454945">Bill Organizer - Billo on the App Store</a>
+    <div class="foot-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="eula.html">EULA</a>
+      <a href="mailto:dev@slyapp.co">Contact</a>
+      <a href="https://cmlapps.github.io/">All apps</a>
+    </div>
+    <div class="foot-legal">Cloud Motion Lab LLC, dev@slyapp.co</div>
+  </footer>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Bill Organizer - Billo",
+  "operatingSystem": "iOS 17.0 or later",
+  "applicationCategory": "FinanceApplication",
+  "url": "https://apps.apple.com/us/app/bill-organizer-billo/id6779454945",
+  "installUrl": "https://apps.apple.com/us/app/bill-organizer-billo/id6779454945",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cloud Motion Lab LLC",
+    "url": "https://cmlapps.github.io/"
+  },
+  "downloadUrl": "https://apps.apple.com/us/app/bill-organizer-billo/id6779454945",
+  "sameAs": [
+    "https://apps.apple.com/us/app/bill-organizer-billo/id6779454945"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How do I keep track of when my bills are due?","acceptedAnswer":{"@type":"Answer","text":"Bill Organizer - Billo holds every bill and its due date in one list on your iPhone and reminds you three days ahead and again on the morning it is due. You type the bills in yourself, so there is no bank login."}},
+    {"@type":"Question","name":"What is the simplest way to do this with no app at all?","acceptedAnswer":{"@type":"Answer","text":"Open your calendar, make one repeating event per bill on its due day, name it with the biller and the amount, and set the alert a few days early. That covers the whole job for most people. The weak point is that a calendar cannot tell you which ones you have already paid this month, so a lot of people end up keeping a second scrap of paper for exactly that."}},
+    {"@type":"Question","name":"Should I just put everything on autopay instead?","acceptedAnswer":{"@type":"Answer","text":"Autopay solves late fees and nothing else. It also hides price rises, since a subscription that quietly goes up is paid without you reading the figure, and it can pull money on a day your balance is low and turn a late fee into an overdraft fee. The usual answer is both: autopay the fixed ones like rent and insurance, keep a reminder for the variable ones like power and water, and glance at the amount before it lands."}},
+    {"@type":"Question","name":"Does it connect to my bank?","acceptedAnswer":{"@type":"Answer","text":"No, and it cannot. There is no bank linking, no account to create and no login. You enter a name, an amount and a due date, which takes a few seconds per bill, and everything is stored on the phone itself. That is the trade: more typing at the start, and no credentials handed to anyone in exchange for less of it."}},
+    {"@type":"Question","name":"Is Billo free?","acceptedAnswer":{"@type":"Answer","text":"Five bills are free, with reminders, the calendar, marking paid and tracking income in included, no ads and no account. Paying lifts the bill limit and adds the Home Screen widget, photo attachments on a bill, the payment history ledger, CSV export of your records and iCloud sync across devices. Without it the data stays on the one phone."}}
+  ]
+}
+</script>
+
 </body>
 </html>
